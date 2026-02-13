@@ -1,0 +1,36 @@
+name: 'CodeForge SDK Generation'
+description: 'Automatically generate and publish SDKs when your OpenAPI spec changes'
+
+inputs:
+  spec_id:
+    description: 'CodeForge spec ID (find in platform UI)'
+    required: true
+  api_token:
+    description: 'CodeForge API token (generate in Account Settings)'
+    required: true
+  spec_path:
+    description: 'Path to OpenAPI spec file in repo (e.g., api/openapi.yaml)'
+    required: true
+  sdk_ids:
+    description: 'Comma-separated SDK IDs to regenerate (optional, defaults to all)'
+    required: false
+  wait_for_completion:
+    description: 'Wait for generation to complete (default: true)'
+    required: false
+    default: 'true'
+  fail_on_error:
+    description: 'Fail workflow if generation fails (default: true)'
+    required: false
+    default: 'true'
+
+outputs:
+  status:
+    description: 'Generation status: success | failed | in_progress'
+  generation_urls:
+    description: 'Comma-separated URLs to view logs on CodeForge'
+  published_packages:
+    description: 'JSON array of published package info'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
