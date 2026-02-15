@@ -22,6 +22,7 @@ async function run(): Promise<void> {
     });
 
     core.info(`Generation triggered: ${response.checks_started} check(s) started`);
+    core.info(`Logs: ${response.logs_url}`);
     setOutputs(response);
   } catch (error) {
     if (error instanceof Error) {
