@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Trigger SDK Generation
-        uses: code-forge/generation-action@v1
+        uses: code-forge/generation-action@v0.2.0
         with:
           spec_id: 4aa2cde8-3978-4b0a-b9b8-4fef6d440e0e
           api_token: ${{ secrets.CODEFORGE_API_TOKEN }}
@@ -45,7 +45,7 @@ jobs:
 ```yaml
 - name: Trigger SDK Generation
   id: generate
-  uses: code-forge/generation-action@v1
+  uses: code-forge/generation-action@v0.2.0
   with:
     spec_id: 4aa2cde8-3978-4b0a-b9b8-4fef6d440e0e
     api_token: ${{ secrets.CODEFORGE_API_TOKEN }}
