@@ -7,7 +7,7 @@ async function run(): Promise<void> {
   try {
     const inputs = parseInputs();
 
-    const isValid = await verifyToken(inputs.apiToken);
+    const isValid = await verifyToken(inputs.apiToken, inputs.apiUrl);
     if (!isValid) {
       throw new Error('Invalid CodeForge API token. Generate one at code-forge.net/settings');
     }
@@ -15,6 +15,7 @@ async function run(): Promise<void> {
     const response = await triggerGeneration({
       specId: inputs.specId,
       apiToken: inputs.apiToken,
+      apiBase: inputs.apiUrl,
       commitSha: process.env.GITHUB_SHA || '',
       commitMessage: process.env.GITHUB_EVENT_HEAD_COMMIT_MESSAGE || '',
       repository: process.env.GITHUB_REPOSITORY || '',

@@ -1,6 +1,5 @@
 {
 	"name": "codegen-action",
-	"version": "1.1.0",
 	"description": "GitHub Action to trigger CodeForge SDK generation when OpenAPI specs change",
 	"main": "dist/index.js",
 	"scripts": {

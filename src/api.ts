@@ -1,12 +1,10 @@
-const API_BASE = "https://api.code-forge.net";
-
 export interface GenerationResponse {
   checks_started: number;
   logs_url: string;
 }
 
-export async function verifyToken(token: string): Promise<boolean> {
-  const response = await fetch(new URL("/action/auth/token", API_BASE), {
+export async function verifyToken(token: string, apiBase: string): Promise<boolean> {
+  const response = await fetch(new URL("/action/auth/token", apiBase), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ api_token: token }),
@@ -20,11 +18,12 @@ export async function verifyToken(token: string): Promise<boolean> {
 export async function triggerGeneration(params: {
   specId: string;
   apiToken: string;
+  apiBase: string;
   commitSha: string;
   commitMessage: string;
   repository: string;
 }): Promise<GenerationResponse> {
-  const url = new URL(`/document-instance/${params.specId}/generate`, API_BASE);
+  const url = new URL(`/document-instance/${params.specId}/generate`, params.apiBase);
   const response = await fetch(url, {
     method: "POST",
     headers: {

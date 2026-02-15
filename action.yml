@@ -8,6 +8,10 @@ inputs:
   api_token:
     description: 'CodeForge API token (generate in Account Settings)'
     required: true
+  api_url:
+    description: 'CodeForge API base URL (override for testing)'
+    required: false
+    default: 'https://api.code-forge.net'
 
 outputs:
   checks_started:
